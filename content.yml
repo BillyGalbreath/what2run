@@ -1,1 +1,484 @@
-
+# Content for what2.run, an upcoming dichotomous web resource for the MC multiplayer community.
+questions:
+warnings:
+    #|=============================================================================|
+    #|                              Warning Templates                              |
+    #|-----------------------------------------------------------------------------|
+    #|       Red banners that appear above potentially problematic projects.       |
+    #|=============================================================================|
+    unstable: |-
+        This implementation is known to be unstable!
+        Where possible, please look for alternatives!
+    unmaintained: |-
+        This implementation has no active developers!
+        You will be on your own if you find any issues!
+    outdated: |-
+        This implementation is designed to run on outdated MC versions.
+        For security reasons, this is almost never a good idea!
+    hybrid: |-
+        This implementation runs a hybrid forge-bukkit API.
+        By design, hybrids are likely to have inherent conflicts.
+    beta: |-
+        This implementation is still in preliminary development.
+        It does not yet offer a fully featured / stable release.
+instances:
+    #|=============================================================================|
+    #|                 The Bukkit Ecosystem (and Its Predecessors)                 |
+    #|-----------------------------------------------------------------------------|
+    #|  All the projects that directly influenced, or share code originating from, |
+    #|  bukkit.org; generally, this includes forks that implement the bukkit API.  |
+    #|=============================================================================|
+    vanilla:
+        warnings:
+            - unstable
+        image: vanilla.png
+        website: https://minecraft.net/
+        download: https://www.minecraft.net/en-us/download/server
+        description: The default, unaltered, server jar released by mojang.
+        features:
+            - The first server implementation to receive updates.
+            - Foolproof official integration via Realms.
+        concerns:
+            - Unstable; it is prone to crashes and corruption.
+            - Unbalanced; there exist numerous gameplay inconsistencies
+            - Inefficient; incapable of maintaining a high player count.
+            - Rigid; difficult to customize (no API).
+    hmod:
+        warnings:
+            - outdated
+            - unmaintained
+        image: hmod.png
+        website: https://canarymod.net/
+        download: http://www.hey0.net/minecraft/
+        description: The first customizable community-authored server wrapper implementation.
+        features:
+            - Capable of supporting connections from MineCraft Alpha clients.
+            - The ideal implementation for versions of MineCraft released before April 2011.
+            - Customizable; it has a plugin api.
+        concerns:
+            - Extremely outdated; it has become highly insecure.
+            - Dead community -- extremely difficult to get support.
+            - No active development and/or developers.
+    craftBukkit:
+        warnings:
+            - outdated
+        image: bukkit.png
+        website: https://bukkit.org/
+        download: http://web.archive.org/web/20180928103402/http://yivesmirror.com/downloads/craftbukkit
+        description: The successor to hmod and the basis of most multiplayer servers to this day.
+        features:
+            - Capable of supporting connections from MineCraft Beta clients.
+            - The ideal implementation for versions of MineCraft released between May 2011 and September 2012.
+            - Widely used API with an enormous selection of plugins.
+        concerns:
+            - Extremely outdated; it has become highly insecure.
+            - Not actively developed and/or supported by any community.
+    spigot:
+        warnings: []
+        image: spigot.png
+        website: https://www.spigotmc.org/
+        download: http://web.archive.org/web/20181004034428/http://yivesmirror.com/downloads/spigot
+        description: The original performant fork of bukkit, and the oldest fork still maintained.
+        features:
+            - Supports connections for all full-release minecraft clients (ideal for MC versions released between October 2012 and June 2014).
+            - Supported by a large community.
+            - Implements the widely used Bukkit API -- accepts bukkit plugins.
+        concerns:
+            - Somewhat stagnant development.
+            - Less performant than its alternatives.
+            - Contains some gameplay inconsistencies (including dupes).
+    tacoSpigot:
+        warnings:
+            - outdated
+            - unmaintained
+        image: taco.png
+        website: https://tacospigot.github.io/
+        download: https://github.com/TacoSpigot/TacoSpigot/releases
+        description: A (primarily) 1.8 fork of PaperSpigot that received an extra year of support.
+        features:
+            - A higher performance fork of PaperSpigot 1.8
+            - Supported for several years after 1.9's release.
+        concerns:
+            - Extremely outdated; it has become highly insecure.
+            - Not actively developed and/or supported by any community.
+    paper:
+        warnings: []
+        image: paper.png
+        website: https://papermc.io/
+        download: https://papermc.io/downloads
+        description: The standard, and most widely used, implementation for modern MineCraft multiplayer.
+        features:
+            - Highly optimised; capable of concurrently supporting numerous players.
+            - Accurately mimics most vanilla behaviours while correcting inconsistencies (i.e. dupes).
+            - Very stable; actively maintained with a large support community.
+            - Implements an improved superset the widely used Bukkit API -- all spigot/bukkit plugins are available.
+        concerns:
+            - Configuration options can be slightly limited (mainly inconsistency patches).
+            - Due to its focus on stability, paper does not include some novel features available elsewhere.
+    tunity:
+        warnings: []
+        image: tunity.png
+        website: https://github.com/Spottedleaf/Tuinity/blob/master/README.md
+        download: https://ci.codemc.io/job/Spottedleaf/job/Tuinity/
+        description: A fork of Paper with a focus on adding new performance optimisations.
+        features:
+            - Some further optimizations built on top of paper, notably including a new lighting engine.
+            - Support community available; implementation actively maintained.
+            - Implements paper's superset of the widely used bukkit API; all paper/spigot/bukkit plugins are available.
+        concerns:
+            - Somewhat novel (slightly less stable than Paper).
+            - Visibly tweaks some minor gameplay-effecting mechanics.
+    airplane:
+        warnings: []
+        image: airplane.png
+        website: https://airplane.gg/
+        download: https://dl.airplane.gg/
+        description: A fork of tunity with a focus on adding even more performance optimisations.
+        features:
+            - Even more optimisations, including mob AI improvements and raytracing.
+            - Support available; implementation actively maintained.
+            - Implements paper's superset of the widely used bukkit API; all paper/spigot/bukkit plugins are available.
+        concerns:
+            - Somewhat experimental (slightly less stable than tunity).
+            - Visibly tweaks gameplay-effecting mechanics.
+    yatopia:
+        warnings:
+            - unstable
+        image: yatopia.gif
+        website: https://yatopiamc.org/
+        download: https://yatopiamc.org/download.html
+        description: An unstable, melting pot, tunity fork that integrates optimisations from all areas of MC development.
+        features:
+            - A heterogeneous agglomeration of (primarily optimisation related) features from other projects.
+            - Maintained and supported by its community.
+            - Implements paper's superset of the widely used bukkit API; all paper/spigot/bukkit plugins are available.
+        concerns:
+            - Visibly changes numerous gameplay-impacting mechanics.
+            - Bleeding edge; highly experimental and unstable.
+            - Prone to irreversible, game-breaking, issues.
+    purpur:
+        warnings: []
+        image: purpur.png
+        website: https://yatopiamc.org/
+        download: https://yatopiamc.org/download.html
+        description: A tunity fork focused on adding numerous, highly customizable, features.
+        features:
+            - Extremely configurable; adds numerous new features.
+            - Support community available; implementation actively maintained.
+            - Implements paper's superset of the widely used bukkit API; all paper/spigot/bukkit plugins are available.
+        concerns:
+            - Somewhat novel (slightly less stable than Paper).
+            - Visibly tweaks some gameplay-impacting mechanics
+    #|=============================================================================|
+    #|                             Modded Environments                             |
+    #|-----------------------------------------------------------------------------|
+    #|   Implementations designed to allow server-side plugins to run alongside    |
+    #|                             client modifications                            |
+    #|=============================================================================|
+    forgeMultiplayer:
+        warnings: []
+        image: forge.jpg
+        website: https://forums.minecraftforge.net/
+        download: https://files.minecraftforge.net/net/minecraftforge/forge/
+        description: The original, intended, way of experiencing modded multiplayer gameplay.
+        features:
+            - Capable of, in a multiplayer context, stably running any mod created with the forge API.
+            - Community supported and actively maintained.
+            - Implements the widely used forge API, an ecosystem with numerous client-side mods.
+        concerns:
+            - Server performance can be somewhat limited (does not work well with large playercounts.
+            - Limited multiplayer plugin ecosystem; can be difficult to administrate.
+            - Mods/plugins can impact server stability.
+    spongeForge:
+        warnings:
+            - outdated
+        image: spongeForge.png
+        website: https://www.spongepowered.org/
+        download: https://www.spongepowered.org/downloads/spongeforge
+        description: The sane and supported way to run server plugins alongside client mods.
+        features:
+            - A stable implementation that allows forge mods to be run besides sponge plugins.
+            - More optimised than its alternatives.
+            - Supported and maintained by a community.
+        concerns:
+            - Server mods can impact server stability.
+            - Limited plugin ecosystem.
+            - Has not been updated past 1.12.2; also supports 1.11.2 & 1.10.2.
+    mohist:
+        warnings:
+            - hybrid
+        image: mohist.png
+        website: https://mohistmc.com/
+        download: https://mohistmc.com/download/
+        description: The current attempt at bridging forge's client API with bukkit's server API.
+        features:
+            - Forge mods can run besides bukkit plugins.
+            - Supported and maintained by a community.
+            - Available for 1.16.5, 1.12.2, and 1.7.10.
+            - Implements two widely used APIs (bukkit & forge); the resulting ecosystem has numerous resources.
+        concerns:
+            - This implementation relies on numerous patches to bridge the gap between forge & paper.
+            - Compared to pure forge, this implementation is less stable.
+            - Many elements of the forge API conflict with the paper API; many plugins/mods will not be compatible.
+    mcpc:
+        warnings:
+            - hybrid
+            - outdated
+        image: thermos.png
+        website: https://cyberdynecc.github.io/Thermos/
+        download: http://web.archive.org/web/20180713055714/http://www.yivesmirror.com/downloads/mcpc
+        description: The current attempt at bridging forge's client API with bukkit's server API.
+        features:
+            - Forge mods can run besides bukkit plugins.
+            - Supports connections from old clients (1.2-1.6)
+            - Implements two widely used APIs (bukkit & forge); the resulting ecosystem has numerous resources.
+        concerns:
+            - This implementation is somewhat less stable than pure forge.
+            - Many elements of the forge API conflict with the spigot API; many plugins/mods will not work.
+            - This plugin is not actively developed or supported by any communities or developers.
+    #|=============================================================================|
+    #|                            Niche Implementations                            |
+    #|-----------------------------------------------------------------------------|
+    #| Java server implementations that exist outside of the bukkit ecosystem and  |
+    #|                are not in any way related to client modding.                |
+    #|=============================================================================|
+    sponge:
+        warnings: []
+        image: sponge.png
+        website: https://www.spongepowered.org/
+        download: https://www.spongepowered.org/downloads/spongevanilla
+        description: A community effort at providing an alternative to the bukkit ecosystem.
+        features:
+            - Fully DCMA and GPL compliant.
+            - Modern, recently developed, fully featured, API.
+            - Created from scratch with modern versions of the game in mind.
+            - Supported and maintained by a community.
+        concerns:
+            - Limited plugin ecosystem; few bukkit plugins have been ported to sponge.
+            - Has not (yet) been updated past 1.12.2
+            - Has not been updated past 1.12.2; also supports 1.11.2 & 1.10.2.
+    mineStom:
+        image: mineStom.png
+        website: https://minestom.com/
+        download: https://github.com/Minestom/Minestom
+        description: A complete cleanroom rewrite of the MineCraft Server, free of any mojang code.
+        features:
+            - Extremely customizable; purpose constructed API.
+            - Extremely fast and scalable; you only need to implement what you need.
+            - Up to date and maintained by a community.
+        concerns:
+            - Does not (by default) allow for vanilla experiences (although a sample reimplementation is available).
+            - Extremely technical; all mechanics need to be coded in directly.
+            - Virtually non-existent ecosystem.
+    phantom:
+        warnings:
+            - beta
+        image: phantom.png
+        website: https://github.com/the-lockedcraft-legacy-organization/PhantomServer/blob/main/README.md
+        download: https://github.com/the-lockedcraft-legacy-organization/PhantomServer/releases
+        description: A lightweight broadcaster designed to deliver a message on your server's IP.
+        features:
+            - Extensive logging capacity, including ping logs and sorted join logs.
+            - Numerous, highly customizable, messaging options (including header, motd, hover, and join).
+            - Extremely lightweight; it can run in any environment (even works on SBMs!).
+            - Supports all implementations (LAN, Java, Bedrock, Pi, etc.)
+        concerns:
+            - Python & micropython-based; no API.
+            - Complex to install on extreme low-end systems.
+            - Gameplay is neither possible nor supported.
+    #|=============================================================================|
+    #|               Server Software for Other Editions of the Game                |
+    #|-----------------------------------------------------------------------------|
+    #|  Software created to run multiplayer environments for mojang products OTHER |
+    #|         than minecraft java edition formerly known as "minecraft".          |
+    #|=============================================================================|
+    #
+    #||}>========================<{|| Raspberry PI Edition ||}>========================<{||
+    mcpiReborn:
+        warnings:
+            - beta
+            - unmaintained
+        image: mcpiReborn.png
+        website: https://wiki.mcpirevival.tk/wiki/MCPI-Reborn#Server_software
+        download: https://jenkins.thebrokenrail.com/job/minecraft-pi-reborn/job/master/
+        description: A PI-based headless server designed to accept connections from MineCraft Pi Edition clients.
+        features:
+            - Accepts connections from PI Edition clients & PI-Reborn clients.
+            - Extremely lightweight; works in hardware-limited environments.
+            - True in scope; exists as a modified version of the PI-Edition server.
+        concerns:
+            - Infrequently updated.
+            - No ecosystem; no capacity for plugins.
+            - Limited API.
+    mcpiPMMP:
+        warnings:
+            - unmaintained
+            - outdated
+        image: piPocketMine.png
+        website: https://wiki.mcpirevival.tk/wiki/PocketMine-MP
+        download: https://github.com/MCPI-Revival/PocketMine-MP
+        description: A PocketMine-based server outdated to the protocol version used by Pi Edition and modified to run on modern OSes.
+        features:
+            - Accepts connections from PI Edition clients & PI-Reborn clients.
+            - Customizable; implements the PocketMine API.
+        concerns:
+            - Unmaintained; infrequently updated.
+            - Small ecosystem.
+            - Based on extremely outdated software; very insecure.
+    #||}>========<{|| Bedrock Edition / Pocket Edition / Education Edition ||}>========<{||
+    vanillaBedrock:
+        warnings:
+            - unstable
+        image: vanillaBedrock.png
+        website: https://minecraft.net/
+        download: https://www.minecraft.net/en-us/download/server/bedrock
+        description: The default, unaltered, server jar released by mojang.
+        features:
+            - The first server implementation to receive updates.
+            - Foolproof official integration via Realms.
+        concerns:
+            - Unstable; it is prone to crashes and corruption.
+            - Unbalanced; there exist numerous gameplay inconsistencies
+            - Inefficient; incapable of maintaining a high player count.
+            - Rigid; difficult to customize (no API).
+    pocketMine:
+        warnings:
+            - unmaintained
+            - outdated
+        image: pocketMine.png
+        website: https://pocketmine.net/
+        download: https://github.com/PocketMine/PocketMine-MP/releases
+        description: The original MC server software for Pocket Edition.
+        features:
+            - Supports connections from MC Pocket Edition Alpha clients
+            - Largest bedrock ecosystem; implements the PocketMine API
+            - Very stable.
+        concerns:
+            - No developers; unmaintained and unsupported.
+            - Extremely outdated, and as such, quite insecure.
+    pocketMine-MP:
+        warnings: []
+        image: pocketMine.png
+        website: https://pmmp.io/
+        download: https://github.com/pmmp/PocketMine-MP/releases
+        description: The foremost server software existing solely for Bedrock Edition
+        features:
+            - Accepts MC server connections from MC Bedrock Edition clients (Release > 1.0.0)
+            - Largest bedrock ecosystem; implements the PocketMine API
+            - Actively developed, significant community support/
+        concerns:
+            - Written in PHP; bit of a transition for users moving from the bukkit ecosystem.
+            - Slow relative to the Java Edition (proxy-based) alternatives.
+    #||}>============================<{|| China Edition ||}>===========================<{||
+    租赁功能:
+        warnings: []
+        image: china.png
+        website: https://www.9game.cn/wodeshijie1/1432703.html
+        download: http://mc.163.com/
+        description: The only option to host multiplayer servers on China Edition.
+        features:
+            - There are two options for mc servers in China; "leased servers" and "online game server".
+            - Apparently, both are available through the MineCraft China Launcher.
+            - Leased servers are similar to Java's Realms, whereas online servers appear to use a bukkit core.
+        concerns:
+            - MC China edition and its server capacities are poorly documented within the English community.
+            - This listing is incomplete; a pull request from a native speaker would be appreciated.
+Proxies:
+    #|=============================================================================|
+    #|                                Java Proxies                                 |
+    #|-----------------------------------------------------------------------------|
+    #| Software designed to connect multiple java instances behind one joinable IP |
+    #|=============================================================================|
+    travertine:
+        warnings: []
+        image: travertine.jpg
+        website: https://github.com/PaperMC/Travertine/blob/master/README.md
+        download: https://papermc.io/downloads#Travertine
+        description: An version of the Waterfall proxy modified to accept connections from 1.7 clients.
+        features:
+            - Allows clients as old as 1.7 to connect to a proxy compatible with modern versions of the game.
+            - Especially useful when used in conjunction with something like ViaVersion or ViaBackwards
+            - Implements the widely used BungeeCord API.
+        concerns:
+            - Slow when compared to some of its alternatives.
+            - Less featured than its alternatives.
+    bungeecord:
+        warnings: []
+        image: bungee.png
+        website: https://www.spigotmc.org/wiki/about-bungeecord/
+        download: https://ci.md-5.net/job/BungeeCord/
+        description: The first proxy solution that allowed multiple bukkit instances to be connected behind a joinable IP.
+        features:
+            - Allows players to connect to server instances from across the java server ecosystem.
+            - Configurable; permission based server access and forced hosts supported.
+            - Large proxy ecosystem based on the widely used BungeeCord API.
+            - Can accept connections from clients as old as MC 1.4.X
+        concerns:
+            - Development has become rather stagnant.
+            - Slow and featureless when compared to its alternatives.
+            - Resource-intensive when compared to its alternatives.
+    waterfall:
+        warnings: []
+        image: waterfall.jpg
+        website: https://paper.readthedocs.io/en/latest/waterfall/getting-started.html
+        download: https://papermc.io/downloads#Waterfall
+        description: An improved, optimized, fork of BungeeCord maintained by PaperMC
+        features:
+            - Allows players to connect to server instances from across the java server ecosystem.
+            - Actively developed; highly stable, scalable, and performant.
+            - Implements the widely used BungeeCord API.
+        concerns:
+            - Slightly slow when compared to its alternatives.
+            - Less featured than its alternatives.
+    velocity:
+        warnings: []
+        image: velocity.png
+        website: https://velocitypowered.com/
+        download: https://velocitypowered.com/downloads
+        description: A completely reimagined, and rewritten, fork 
+        features:
+            - Extremely fast, optimised, and secure.
+            - Highly compatible (especially insofar as it does not entail entity ID rewriting.
+            - Extremely customizable (Connecting to proxies via a proxy supported).
+        concerns:
+            - Less established plugin ecosystem; incompatible with the bungeeCord API.
+    #|=============================================================================|
+    #|                               Bridge Proxies                                |
+    #|-----------------------------------------------------------------------------|
+    #|  Software designed to allow clients from one edition of MC to connect to a  |
+    #|         server hosted in the feature-rich environment of another.           |
+    #|=============================================================================|
+    #
+    #||}>========<{|| Bedrock Edition / Pocket Edition / Education Edition ||}>========<{||
+    geyser:
+        warnings: []
+        image: geyser.png
+        website: https://geysermc.org/
+        download: https://ci.opencollab.dev//job/GeyserMC/job/Geyser/job/master/
+        description: Allows MineCraft Bedrock Edition clients to connect to Java Edition servers
+        features:
+            - Allows Bedrock Edition servers to take advantage of the feature-rich and established Java edition ecosystem.
+            - Allows bedrock clients to play alongside java edition clients.
+            - Can facilitate connections to a proxy (a possible example being Client > Geyser > Velocity > Bungee > Paper)
+        concerns:
+            - Due to the nature of what it is attempting (through protocol translation), it can occasionally be somewhat buggy.
+    #|=============================================================================|
+    #|                   Proxies for Other Editions of the Game                    |
+    #|-----------------------------------------------------------------------------|
+    #| Software designed to allow clients multiple instances of non-java instances |
+    #|                           Behind one joinable IP                            |
+    #|=============================================================================|
+    #
+    #||}>========<{|| Bedrock Edition / Pocket Edition / Education Edition ||}>========<{||
+    Waterdog:
+        warnings: []
+        image: waterdog.png
+        website: https://docs.waterdog.dev/shelves/waterdogpe-guides
+        download: https://jenkins.waterdog.dev/
+        description: Allows multiple PocketMine instances to be connected behind a single IP.
+        features:
+            - Allows MineCraft Bedrock Edition clients to connect to each other.
+            - Customizable; has an API
+            - Actively maintained.
+        concerns:
+            - Somewhat small plugin ecosystem.
