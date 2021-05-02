@@ -21,6 +21,12 @@ warnings:
     beta: |-
         This implementation is still in preliminary development.
         It does not yet offer a fully featured / stable release.
+    illegal: |-
+        Due to a DCMA, all available downloads for this project are illegal.
+        While they exist (i.e. wayback), we can not directly link to them.
+    offload: |-
+        The entire bukkit ecosystem has been impacted by a DCMA.
+        This project uses a workaround that offloads legality issues to the user.
 instances:
     #|=============================================================================|
     #|                 The Bukkit Ecosystem (and Its Predecessors)                 |
@@ -59,12 +65,45 @@ instances:
             - Extremely outdated; it has become highly insecure.
             - Dead community -- extremely difficult to get support.
             - No active development and/or developers.
+    canaryMod:
+        warnings:
+            - outdated
+            - unmaintained
+        image: hmod.png
+        website: https://canarymod.net/
+        download: https://github.com/CanaryModTeam/CanaryMod/releases
+        description: The first customizable community-authored server wrapper implementation.
+        features:
+            - Capable of supporting connections from MineCraft Beta clients.
+            - The ideal implementation for versions of MineCraft released between June 2012 and June 2014.
+            - Customizable; it has a plugin api.
+        concerns:
+            - Extremely outdated; it has become highly insecure.
+            - Dead community -- extremely difficult to get support.
+    vHMod:
+            - No active development and/or developers.
+        warnings:
+            - outdated
+            - unmaintained
+        image: hmod.png
+        website: https://canarymod.net/
+        download: https://github.com/dbrownidau/Minecraft-Server-Mod/releases
+        description: The first customizable community-authored server wrapper implementation.
+        features:
+            - Capable of supporting connections from early MineCraft Release clients.
+            - The ideal implementation for versions of MineCraft released between May 2011 and April 2012.
+            - Customizable; it has a plugin api.
+        concerns:
+            - Extremely outdated; it has become highly insecure.
+            - Dead community -- extremely difficult to get support.
+            - No active development and/or developers.
     craftBukkit:
         warnings:
             - outdated
+            - illegal
         image: bukkit.png
         website: https://bukkit.org/
-        download: http://web.archive.org/web/20180928103402/http://yivesmirror.com/downloads/craftbukkit
+        download: https://bukkit.fandom.com/wiki/Setting_up_a_server
         description: The successor to hmod and the basis of most multiplayer servers to this day.
         features:
             - Capable of supporting connections from MineCraft Beta clients.
@@ -73,24 +112,28 @@ instances:
         concerns:
             - Extremely outdated; it has become highly insecure.
             - Not actively developed and/or supported by any community.
+            - There is (currently) no legal way to download this project's releases.
     spigot:
-        warnings: []
+        warnings:
+            - illegal
+            - offload
         image: spigot.png
         website: https://www.spigotmc.org/
-        download: http://web.archive.org/web/20181004034428/http://yivesmirror.com/downloads/spigot
+        download: https://hub.spigotmc.org/jenkins/job/BuildTools/
         description: The original performant fork of bukkit, and the oldest fork still maintained.
         features:
             - Supports connections for all full-release minecraft clients (ideal for MC versions released between October 2012 and June 2014).
             - Supported by a large community.
             - Implements the widely used Bukkit API -- accepts bukkit plugins.
         concerns:
-            - Somewhat stagnant development.
-            - Less performant than its alternatives.
+            - Somewhat stagnant development and less performant than its alternatives.
             - Contains some gameplay inconsistencies (including dupes).
+            - There is (currently) no legal way to download versions released before 1.8
     tacoSpigot:
         warnings:
             - outdated
             - unmaintained
+            - offload
         image: taco.png
         website: https://tacospigot.github.io/
         download: https://github.com/TacoSpigot/TacoSpigot/releases
@@ -102,7 +145,8 @@ instances:
             - Extremely outdated; it has become highly insecure.
             - Not actively developed and/or supported by any community.
     paper:
-        warnings: []
+        warnings:
+            - offload
         image: paper.png
         website: https://papermc.io/
         download: https://papermc.io/downloads
@@ -116,7 +160,8 @@ instances:
             - Configuration options can be slightly limited (mainly inconsistency patches).
             - Due to its focus on stability, paper does not include some novel features available elsewhere.
     tunity:
-        warnings: []
+        warnings:
+            - offload
         image: tunity.png
         website: https://github.com/Spottedleaf/Tuinity/blob/master/README.md
         download: https://ci.codemc.io/job/Spottedleaf/job/Tuinity/
@@ -129,7 +174,8 @@ instances:
             - Somewhat novel (slightly less stable than Paper).
             - Visibly tweaks some minor gameplay-effecting mechanics.
     airplane:
-        warnings: []
+        warnings:
+            - offload
         image: airplane.png
         website: https://airplane.gg/
         download: https://dl.airplane.gg/
@@ -144,6 +190,7 @@ instances:
     yatopia:
         warnings:
             - unstable
+            - offload
         image: yatopia.gif
         website: https://yatopiamc.org/
         download: https://yatopiamc.org/download.html
@@ -157,10 +204,11 @@ instances:
             - Bleeding edge; highly experimental and unstable.
             - Prone to irreversible, game-breaking, issues.
     purpur:
-        warnings: []
+        warnings:
+            - offload
         image: purpur.png
-        website: https://yatopiamc.org/
-        download: https://yatopiamc.org/download.html
+        website: https://purpur.pl3x.net/
+        download: https://purpur.pl3x.net/downloads
         description: A tunity fork focused on adding numerous, highly customizable, features.
         features:
             - Extremely configurable; adds numerous new features.
